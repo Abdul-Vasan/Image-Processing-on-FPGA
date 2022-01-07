@@ -1,0 +1,44 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "D:\SOFTWA~1\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\SOFTWA~1\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\SOFTWA~1\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\SOFTWA~1\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\SOFTWA~1\iverilog\lib\ivl\va_math.vpi";
+S_000001fa6fb22fc0 .scope module, "dataReg" "dataReg" 2 23;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "i_clk";
+    .port_info 1 /INPUT 1 "i_data";
+    .port_info 2 /INPUT 1 "i_data_valid";
+    .port_info 3 /OUTPUT 1 "o_data";
+    .port_info 4 /OUTPUT 1 "o_data_valid";
+P_000001fa6fc483f0 .param/l "dataWidth" 0 2 23, +C4<00000000000000000000000000000001>;
+o000001fa6fb56fd8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001fa6fb23150_0 .net "i_clk", 0 0, o000001fa6fb56fd8;  0 drivers
+o000001fa6fb57008 .functor BUFZ 1, C4<z>; HiZ drive
+v000001fa6fb231f0_0 .net "i_data", 0 0, o000001fa6fb57008;  0 drivers
+o000001fa6fb57038 .functor BUFZ 1, C4<z>; HiZ drive
+v000001fa6fb23290_0 .net "i_data_valid", 0 0, o000001fa6fb57038;  0 drivers
+v000001fa6fc4d900_0 .var "o_data", 0 0;
+v000001fa6fc4d9a0_0 .var "o_data_valid", 0 0;
+E_000001fa6fc480f0 .event posedge, v000001fa6fb23150_0;
+    .scope S_000001fa6fb22fc0;
+T_0 ;
+    %wait E_000001fa6fc480f0;
+    %load/vec4 v000001fa6fb23290_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %load/vec4 v000001fa6fb231f0_0;
+    %assign/vec4 v000001fa6fc4d900_0, 0;
+T_0.0 ;
+    %load/vec4 v000001fa6fb23290_0;
+    %assign/vec4 v000001fa6fc4d9a0_0, 0;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "dataReg.v";
